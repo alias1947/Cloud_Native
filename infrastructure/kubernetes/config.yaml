@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cloud-native-platform
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: cloud-native-platform
+data:
+  POSTGRES_DB: "cloud_native_db"
+  POSTGRES_USER: "postgres"
+  POSTGRES_PASSWORD: "password123"
+  REDIS_URL: "redis://redis-service:6379"
+  RABBITMQ_URL: "amqp://guest:guest@rabbitmq-service:5672/"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-secrets
+  namespace: cloud-native-platform
+type: Opaque
+data:
+  jwt-secret: "c2VjcmV0LWtleS1mb3Itand0"  # base64 encoded "secret-key-for-jwt"
+  db-password: "cGFzc3dvcmQxMjM="  # base64 encoded "password123"

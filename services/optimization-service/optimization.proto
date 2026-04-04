@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package optimization;
+
+service OptimizationService {
+  rpc AllocateResources(AllocationRequest) returns (AllocationResponse);
+  rpc DualOptimization(DualOptimizationRequest) returns (DualOptimizationResponse);
+  rpc PredictQoS(QoSPredictionRequest) returns (QoSPredictionResponse);
+}
+
+message Resource {
+  string id = 1;
+  string name = 2;
+  double available_power = 3;
+  double max_power = 4;
+}
+
+message Task {
+  string id = 1;
+  string name = 2;
+  int32 priority = 3;
+  double required_power = 4;
+  double qos_requirement = 5;
+}
+
+message AllocationRequest {
+  repeated Resource resources = 1;
+  repeated Task tasks = 2;
+  string constraint_type = 3;
+}
+
+message AllocationResult {
+  string task_id = 1;
+  double allocated_power = 2;
+  string resource_id = 3;
+  double satisfaction_level = 4;
+}
+
+message AllocationResponse {
+  repeated AllocationResult allocations = 1;
+}
+
+message DualOptimizationRequest {
+  repeated Resource resources = 1;
+  repeated Task tasks = 2;
+}
+
+message DualOptimizationResponse {
+  string method = 1;
+  int32 iterations = 2;
+  double convergence = 3;
+  string optimization_type = 4;
+  string message = 5;
+}
+
+message QoSPredictionRequest {
+  repeated Task tasks = 1;
+}
+
+message QoSPrediction {
+  string task_id = 1;
+  double predicted_degradation = 2;
+  string status = 3;
+}
+
+message QoSPredictionResponse {
+  repeated QoSPrediction predictions = 1;
+}
