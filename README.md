@@ -40,7 +40,7 @@ This platform addresses the critical challenges of managing distributed microser
 
 ### Prerequisites
 
-- Python 3.8+
+- Python 3.10+
 - Node.js 16+
 - npm or yarn
 
