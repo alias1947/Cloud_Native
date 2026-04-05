@@ -101,10 +101,7 @@ async def auto_scale(request: AutoScalingRequest):
     action = "none"
     new_replicas = request.current_replicas
 
-    if (
-        avg_cpu > request.policy.cpu_threshold
-        or avg_memory > request.policy.memory_threshold
-    ):
+    if avg_cpu > request.policy.cpu_threshold or avg_memory > request.policy.memory_threshold:
         if new_replicas < request.policy.max_replicas:
             new_replicas = min(new_replicas + 1, request.policy.max_replicas)
             action = "scale_up"

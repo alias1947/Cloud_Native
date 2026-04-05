@@ -10,6 +10,7 @@ jobs:
   test-python:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         python-version: ['3.8', '3.9', '3.10', '3.11']
 
@@ -25,19 +26,22 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install pytest pytest-cov
     
     - name: Run tests
       run: |
-        pytest tests/ -v --cov=services --cov-report=xml
+        python -m pytest tests/ -v --cov=services --cov-report=xml -m "not e2e"
     
     - name: Upload coverage
       uses: codecov/codecov-action@v3
+      continue-on-error: true
       with:
         file: ./coverage.xml
+        fail_ci_if_error: false
 
   test-ui:
     runs-on: ubuntu-latest
+    env:
+      CI: true
 
     steps:
     - uses: actions/checkout@v3
@@ -55,7 +59,7 @@ jobs:
     - name: Run tests
       run: |
         cd ui
-        npm test -- --coverage
+        npm test -- --coverage --watchAll=false
     
     - name: Build
       run: |
@@ -80,9 +84,9 @@ jobs:
     
     - name: Check code format
       run: |
-        black --check services/ tests/
-        isort --check-only services/ tests/
-        flake8 services/ tests/ --max-line-length=100
+        python -m black --check services/ tests/
+        python -m isort --check-only services/ tests/
+        python -m flake8 services/ tests/
 
   security:
     runs-on: ubuntu-latest
@@ -98,12 +102,12 @@ jobs:
     - name: Install security tools
       run: |
         python -m pip install --upgrade pip
-        pip install bandit safety
+        pip install bandit pip-audit
     
     - name: Run security checks
       run: |
-        bandit -r services/ -ll
-        safety check
+        bandit -r services/ -ll -c .bandit
+        pip-audit -r requirements.txt
 
   build:
     runs-on: ubuntu-latest

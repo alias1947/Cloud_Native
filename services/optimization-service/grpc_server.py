@@ -54,8 +54,7 @@ class OptimizationServicer(OptimizationServiceServicer):
                 if resource["available_power"] >= task["required_power"]:
                     if (
                         best_resource is None
-                        or resource["available_power"]
-                        < best_resource["available_power"]
+                        or resource["available_power"] < best_resource["available_power"]
                     ):
                         best_resource = resource
                         best_power = task["required_power"]
@@ -116,9 +115,7 @@ class OptimizationServicer(OptimizationServiceServicer):
                 status = "warning"
 
             predictions.append(
-                QoSPrediction(
-                    task_id=task.id, predicted_degradation=degradation, status=status
-                )
+                QoSPrediction(task_id=task.id, predicted_degradation=degradation, status=status)
             )
 
         return QoSPredictionResponse(predictions=predictions)

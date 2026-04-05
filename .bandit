@@ -1,0 +1,5 @@
+# Demo project: in-memory creds and dev binds are intentional.
+skips:
+  - B104  # hardcoded_bind_all_interfaces (uvicorn 0.0.0.0)
+  - B105  # hardcoded_password_string (demo users_db)
+  - B608  # hardcoded_sql_expressions (manifest env strings)

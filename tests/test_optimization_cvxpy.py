@@ -3,8 +3,6 @@
 import sys
 from pathlib import Path
 
-import pytest
-
 opt_dir = Path(__file__).resolve().parent.parent / "services" / "optimization-service"
 sys.path.insert(0, str(opt_dir))
 

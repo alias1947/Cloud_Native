@@ -143,9 +143,7 @@ async def predict_qos_degradation(tasks: List[Task]):
                 "task_id": task.id,
                 "predicted_degradation": degradation,
                 "status": (
-                    "normal"
-                    if degradation < 10
-                    else "warning" if degradation < 30 else "critical"
+                    "normal" if degradation < 10 else "warning" if degradation < 30 else "critical"
                 ),
             }
         )

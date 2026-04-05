@@ -95,9 +95,7 @@ async def collect_metric(metric: Metric):
 
 
 @app.get("/metrics")
-async def get_metrics(
-    service: str = None, metric_type: MetricType = None, limit: int = 100
-):
+async def get_metrics(service: str = None, metric_type: MetricType = None, limit: int = 100):
     """Get collected metrics"""
     filtered_metrics = metrics_store
 
@@ -105,9 +103,7 @@ async def get_metrics(
         filtered_metrics = [m for m in filtered_metrics if m["service"] == service]
 
     if metric_type:
-        filtered_metrics = [
-            m for m in filtered_metrics if m["metric_type"] == metric_type.value
-        ]
+        filtered_metrics = [m for m in filtered_metrics if m["metric_type"] == metric_type.value]
 
     return {"metrics": filtered_metrics[-limit:]}
 
