@@ -4,53 +4,50 @@
 # source: optimization.proto
 # Protobuf Python Version: 6.31.1
 """Generated protocol buffer code."""
+
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import runtime_version as _runtime_version
 from google.protobuf import symbol_database as _symbol_database
 from google.protobuf.internal import builder as _builder
+
 _runtime_version.ValidateProtobufRuntimeVersion(
-    _runtime_version.Domain.PUBLIC,
-    6,
-    31,
-    1,
-    '',
-    'optimization.proto'
+    _runtime_version.Domain.PUBLIC, 6, 31, 1, "", "optimization.proto"
 )
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 
-
-
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x12optimization.proto\x12\x0coptimization\"P\n\x08Resource\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x17\n\x0f\x61vailable_power\x18\x03 \x01(\x01\x12\x11\n\tmax_power\x18\x04 \x01(\x01\"c\n\x04Task\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x10\n\x08priority\x18\x03 \x01(\x05\x12\x16\n\x0erequired_power\x18\x04 \x01(\x01\x12\x17\n\x0fqos_requirement\x18\x05 \x01(\x01\"z\n\x11\x41llocationRequest\x12)\n\tresources\x18\x01 \x03(\x0b\x32\x16.optimization.Resource\x12!\n\x05tasks\x18\x02 \x03(\x0b\x32\x12.optimization.Task\x12\x17\n\x0f\x63onstraint_type\x18\x03 \x01(\t\"m\n\x10\x41llocationResult\x12\x0f\n\x07task_id\x18\x01 \x01(\t\x12\x17\n\x0f\x61llocated_power\x18\x02 \x01(\x01\x12\x13\n\x0bresource_id\x18\x03 \x01(\t\x12\x1a\n\x12satisfaction_level\x18\x04 \x01(\x01\"I\n\x12\x41llocationResponse\x12\x33\n\x0b\x61llocations\x18\x01 \x03(\x0b\x32\x1e.optimization.AllocationResult\"g\n\x17\x44ualOptimizationRequest\x12)\n\tresources\x18\x01 \x03(\x0b\x32\x16.optimization.Resource\x12!\n\x05tasks\x18\x02 \x03(\x0b\x32\x12.optimization.Task\"\x7f\n\x18\x44ualOptimizationResponse\x12\x0e\n\x06method\x18\x01 \x01(\t\x12\x12\n\niterations\x18\x02 \x01(\x05\x12\x13\n\x0b\x63onvergence\x18\x03 \x01(\x01\x12\x19\n\x11optimization_type\x18\x04 \x01(\t\x12\x0f\n\x07message\x18\x05 \x01(\t\"9\n\x14QoSPredictionRequest\x12!\n\x05tasks\x18\x01 \x03(\x0b\x32\x12.optimization.Task\"O\n\rQoSPrediction\x12\x0f\n\x07task_id\x18\x01 \x01(\t\x12\x1d\n\x15predicted_degradation\x18\x02 \x01(\x01\x12\x0e\n\x06status\x18\x03 \x01(\t\"I\n\x15QoSPredictionResponse\x12\x30\n\x0bpredictions\x18\x01 \x03(\x0b\x32\x1b.optimization.QoSPrediction2\xa7\x02\n\x13OptimizationService\x12V\n\x11\x41llocateResources\x12\x1f.optimization.AllocationRequest\x1a .optimization.AllocationResponse\x12\x61\n\x10\x44ualOptimization\x12%.optimization.DualOptimizationRequest\x1a&.optimization.DualOptimizationResponse\x12U\n\nPredictQoS\x12\".optimization.QoSPredictionRequest\x1a#.optimization.QoSPredictionResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(
+    b'\n\x12optimization.proto\x12\x0coptimization"P\n\x08Resource\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x17\n\x0f\x61vailable_power\x18\x03 \x01(\x01\x12\x11\n\tmax_power\x18\x04 \x01(\x01"c\n\x04Task\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x10\n\x08priority\x18\x03 \x01(\x05\x12\x16\n\x0erequired_power\x18\x04 \x01(\x01\x12\x17\n\x0fqos_requirement\x18\x05 \x01(\x01"z\n\x11\x41llocationRequest\x12)\n\tresources\x18\x01 \x03(\x0b\x32\x16.optimization.Resource\x12!\n\x05tasks\x18\x02 \x03(\x0b\x32\x12.optimization.Task\x12\x17\n\x0f\x63onstraint_type\x18\x03 \x01(\t"m\n\x10\x41llocationResult\x12\x0f\n\x07task_id\x18\x01 \x01(\t\x12\x17\n\x0f\x61llocated_power\x18\x02 \x01(\x01\x12\x13\n\x0bresource_id\x18\x03 \x01(\t\x12\x1a\n\x12satisfaction_level\x18\x04 \x01(\x01"I\n\x12\x41llocationResponse\x12\x33\n\x0b\x61llocations\x18\x01 \x03(\x0b\x32\x1e.optimization.AllocationResult"g\n\x17\x44ualOptimizationRequest\x12)\n\tresources\x18\x01 \x03(\x0b\x32\x16.optimization.Resource\x12!\n\x05tasks\x18\x02 \x03(\x0b\x32\x12.optimization.Task"\x7f\n\x18\x44ualOptimizationResponse\x12\x0e\n\x06method\x18\x01 \x01(\t\x12\x12\n\niterations\x18\x02 \x01(\x05\x12\x13\n\x0b\x63onvergence\x18\x03 \x01(\x01\x12\x19\n\x11optimization_type\x18\x04 \x01(\t\x12\x0f\n\x07message\x18\x05 \x01(\t"9\n\x14QoSPredictionRequest\x12!\n\x05tasks\x18\x01 \x03(\x0b\x32\x12.optimization.Task"O\n\rQoSPrediction\x12\x0f\n\x07task_id\x18\x01 \x01(\t\x12\x1d\n\x15predicted_degradation\x18\x02 \x01(\x01\x12\x0e\n\x06status\x18\x03 \x01(\t"I\n\x15QoSPredictionResponse\x12\x30\n\x0bpredictions\x18\x01 \x03(\x0b\x32\x1b.optimization.QoSPrediction2\xa7\x02\n\x13OptimizationService\x12V\n\x11\x41llocateResources\x12\x1f.optimization.AllocationRequest\x1a .optimization.AllocationResponse\x12\x61\n\x10\x44ualOptimization\x12%.optimization.DualOptimizationRequest\x1a&.optimization.DualOptimizationResponse\x12U\n\nPredictQoS\x12".optimization.QoSPredictionRequest\x1a#.optimization.QoSPredictionResponseb\x06proto3'
+)
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
-_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'optimization_pb2', _globals)
+_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, "optimization_pb2", _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
-  DESCRIPTOR._loaded_options = None
-  _globals['_RESOURCE']._serialized_start=36
-  _globals['_RESOURCE']._serialized_end=116
-  _globals['_TASK']._serialized_start=118
-  _globals['_TASK']._serialized_end=217
-  _globals['_ALLOCATIONREQUEST']._serialized_start=219
-  _globals['_ALLOCATIONREQUEST']._serialized_end=341
-  _globals['_ALLOCATIONRESULT']._serialized_start=343
-  _globals['_ALLOCATIONRESULT']._serialized_end=452
-  _globals['_ALLOCATIONRESPONSE']._serialized_start=454
-  _globals['_ALLOCATIONRESPONSE']._serialized_end=527
-  _globals['_DUALOPTIMIZATIONREQUEST']._serialized_start=529
-  _globals['_DUALOPTIMIZATIONREQUEST']._serialized_end=632
-  _globals['_DUALOPTIMIZATIONRESPONSE']._serialized_start=634
-  _globals['_DUALOPTIMIZATIONRESPONSE']._serialized_end=761
-  _globals['_QOSPREDICTIONREQUEST']._serialized_start=763
-  _globals['_QOSPREDICTIONREQUEST']._serialized_end=820
-  _globals['_QOSPREDICTION']._serialized_start=822
-  _globals['_QOSPREDICTION']._serialized_end=901
-  _globals['_QOSPREDICTIONRESPONSE']._serialized_start=903
-  _globals['_QOSPREDICTIONRESPONSE']._serialized_end=976
-  _globals['_OPTIMIZATIONSERVICE']._serialized_start=979
-  _globals['_OPTIMIZATIONSERVICE']._serialized_end=1274
+    DESCRIPTOR._loaded_options = None
+    _globals["_RESOURCE"]._serialized_start = 36
+    _globals["_RESOURCE"]._serialized_end = 116
+    _globals["_TASK"]._serialized_start = 118
+    _globals["_TASK"]._serialized_end = 217
+    _globals["_ALLOCATIONREQUEST"]._serialized_start = 219
+    _globals["_ALLOCATIONREQUEST"]._serialized_end = 341
+    _globals["_ALLOCATIONRESULT"]._serialized_start = 343
+    _globals["_ALLOCATIONRESULT"]._serialized_end = 452
+    _globals["_ALLOCATIONRESPONSE"]._serialized_start = 454
+    _globals["_ALLOCATIONRESPONSE"]._serialized_end = 527
+    _globals["_DUALOPTIMIZATIONREQUEST"]._serialized_start = 529
+    _globals["_DUALOPTIMIZATIONREQUEST"]._serialized_end = 632
+    _globals["_DUALOPTIMIZATIONRESPONSE"]._serialized_start = 634
+    _globals["_DUALOPTIMIZATIONRESPONSE"]._serialized_end = 761
+    _globals["_QOSPREDICTIONREQUEST"]._serialized_start = 763
+    _globals["_QOSPREDICTIONREQUEST"]._serialized_end = 820
+    _globals["_QOSPREDICTION"]._serialized_start = 822
+    _globals["_QOSPREDICTION"]._serialized_end = 901
+    _globals["_QOSPREDICTIONRESPONSE"]._serialized_start = 903
+    _globals["_QOSPREDICTIONRESPONSE"]._serialized_end = 976
+    _globals["_OPTIMIZATIONSERVICE"]._serialized_start = 979
+    _globals["_OPTIMIZATIONSERVICE"]._serialized_end = 1274
 # @@protoc_insertion_point(module_scope)

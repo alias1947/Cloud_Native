@@ -1,5 +1,6 @@
-import pytest
 import httpx
+import pytest
+
 
 class TestCloudNativePlatform:
     """End-to-end tests for Cloud-Native Microservices Platform"""
@@ -9,7 +10,7 @@ class TestCloudNativePlatform:
         "auth": "http://localhost:8001",
         "optimization": "http://localhost:8002",
         "resource_mgmt": "http://localhost:8003",
-        "monitoring": "http://localhost:8004"
+        "monitoring": "http://localhost:8004",
     }
 
     @pytest.mark.asyncio
@@ -29,7 +30,9 @@ class TestCloudNativePlatform:
         async with httpx.AsyncClient() as client:
             # Login
             login_data = {"username": "admin", "password": "admin123"}
-            response = await client.post(f"{self.BASE_URLS['auth']}/auth/login", json=login_data)
+            response = await client.post(
+                f"{self.BASE_URLS['auth']}/auth/login", json=login_data
+            )
             assert response.status_code == 200
             token_data = response.json()
             assert "access_token" in token_data
@@ -39,7 +42,9 @@ class TestCloudNativePlatform:
             headers = {"Authorization": f"Bearer {token}"}
 
             # Verify token
-            response = await client.get(f"{self.BASE_URLS['auth']}/auth/verify", headers=headers)
+            response = await client.get(
+                f"{self.BASE_URLS['auth']}/auth/verify", headers=headers
+            )
             assert response.status_code == 200
             verify_data = response.json()
             assert verify_data["username"] == "admin"
@@ -50,7 +55,9 @@ class TestCloudNativePlatform:
         """Test monitoring service functionality"""
         async with httpx.AsyncClient() as client:
             # Test system metrics collection
-            response = await client.get(f"{self.BASE_URLS['monitoring']}/system/metrics")
+            response = await client.get(
+                f"{self.BASE_URLS['monitoring']}/system/metrics"
+            )
             assert response.status_code == 200
             metrics = response.json()
             assert "system_metrics" in metrics
@@ -62,6 +69,7 @@ class TestCloudNativePlatform:
             rules = response.json()
             assert "rules" in rules
             assert len(rules["rules"]) > 0
+
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
